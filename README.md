@@ -61,3 +61,49 @@ import { someMethod } from "my-dep";
 `/node_modules/.vite/deps/my-dep.js?v=f3sf2ebd` 브라우저에서 제대로 가져올 수 있도록 URL로 불러올 수 있음
 
 _핫 리로딩_ 지원으로 새로고침과 동시에 자동으로 최신 내용을 반영합니다.
+
+# 🙃플러그인 사용
+
+플러그인 사용에 앞서 `devDependencies` 에 내용을 추가해야한다. `vite.config.js`를 생성하여 진행해보자면
+
+우선 모듈을 설치한다
+
+```npm
+$ npm add -D @vitejs/plugin-legacy
+```
+
+```javascript
+// vite.config.js
+import legacy from "@vitejs/plugin-legacy";
+import { defineConfig } from "vite";
+
+export default defineConfig({
+  plugins: [
+    legacy({
+      targets: ["defaults", "not IE 11"],
+    }),
+  ],
+});
+```
+
+위는 플러그인 사용에 앞선 우선 준비과정이다.
+
+링크 버전 및 목록과 소개는 <a href="https://vitejs.dev/plugins/">위 공식링크</a>에 기재되어있음
+
+## 예시
+
+```javascript
+// image 플러그인을 가져옴
+import image from "@rollup/plugin-image";
+import { defineConfig } from "vite";
+
+export default defineConfig({
+  plugins: [
+    {
+      // Spread 연산자 이후 함수호출로 플러그인 사용
+      ...image(),
+      enforce: "pre",
+    },
+  ],
+});
+```
