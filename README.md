@@ -107,3 +107,16 @@ export default defineConfig({
   ],
 });
 ```
+
+## 🥂종속성 사전 번들링
+
+```
+Pre-bundling dependencies:
+  react
+  react-dom
+(this will be run only when your dependencies or config have changed)
+```
+
+Vite를 처음 실행하면 위와같은 메시지가 표시될 수 있다.
+
+기존 CommonJS 또는 UMD로 제공되는 코드를 `Vite`는 `ESM`으로 변환하는 과정을 거치는데 이유는 기존의 많은 요청을 요구하는 모듈을 가볍게 변환하는 과정이라 생각하면 편하다
