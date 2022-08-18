@@ -120,3 +120,24 @@ Pre-bundling dependencies:
 Vite를 처음 실행하면 위와같은 메시지가 표시될 수 있다.
 
 기존 CommonJS 또는 UMD로 제공되는 코드를 `Vite`는 `ESM`으로 변환하는 과정을 거치는데 이유는 기존의 많은 요청을 요구하는 모듈을 가볍게 변환하는 과정이라 생각하면 편하다
+
+# 🍱 애플리케이션 빌드 및 배포
+
+기본적으로 프로덕션 앱을 배포할 때 `vite build` 명령을 실행하면 `<root>/index.html` 를 기준으로 배포된다.
+
+## 🥕파일 변경 사항에 따라 재구축
+
+파일 변경에 따라 Ctrl+S 와 동시에 즉시 반영하고 싶다면 `vite build --watcj` 명령어 실행하면 `WatcherOptions` 로 `vite.config.js` 파일에 옵션을 줄 수 있다.
+
+```
+// vite.config.js
+export default defineConfig({
+  build: {
+    watch: {
+      // https://rollupjs.org/guide/en/#watch-options
+    }
+  }
+})
+```
+
+`--watch`플래그가 활성화되었다면 자동 반영이 가능합니다.
