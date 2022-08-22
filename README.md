@@ -170,3 +170,27 @@ export default defineConfig({
 }
 
 ```
+
+# 👁‍🗨환경 변수 및 모드
+
+## 📎환경 변수
+
+`import.meta.env.MODE`: {string} 앱이 실행 중인 모드 입니다.
+
+`import.meta.env.BASE_URL`: {string} 앱이 제공되는 기본 URL입니다. 이것은 구성 옵션에 의해 결정됩니다.
+
+`import.meta.env.PROD`: {boolean} 앱이 프로덕션에서 실행 중인지 여부.
+
+`import.meta.env.DEV`: {boolean} 앱이 개발 중인지 여부(TRUE 의 반대 )`import.meta.env.PROD`
+
+`import.meta.env.SSR`: {boolean} 앱이 서버 에서 실행 중인지 여부.
+
+기구축된 환경변수는 위와 같으며 사용자 환경변수 생성은
+
+```javascript
+// 아래와 같이 선언되어야 하며
+import.meta.env.변수명;
+
+// 대괄호를 이용한 선언은 불가능하다.
+import.meta.env[변수명];
+```
